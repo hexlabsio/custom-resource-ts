@@ -8,6 +8,7 @@
     "test": "jest --ci --runInBand --coverage --reporters=default --reporters=jest-junit --passWithNoTests",
     "lint": "eslint **/*.ts"
   },
+  "files": ["dist"],
   "eslintConfig": {
     "extends": [
       "eslint:recommended",
@@ -79,8 +80,5 @@
     "ts-jest": "^27.0.2",
     "ts-loader": "^6.2.2",
     "typescript": "^4.3.2"
-  },
-  "dependencies": {
-    "node-fetch": "^3.0.0"
   }
 }
