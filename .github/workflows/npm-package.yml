@@ -34,6 +34,9 @@ jobs:
       - name: Production Build
         run: npm run build
 
+      - name: Package
+        run: npm pack
+
       - name: Authenticate with NPM registry
         if: github.ref == 'refs/heads/master'
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
