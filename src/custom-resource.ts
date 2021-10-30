@@ -52,7 +52,7 @@ export class CustomResourceHandler<T> {
   }
   
   async onDelete(request: DeleteRequest<T>): Promise<PartialCustomResourceResponse> {
-    return {Status: 'FAILED'};
+    return {Status: 'SUCCESS'};
   }
   
   private async handleWithErrors(request: CustomResourceRequest<T>): Promise<PartialCustomResourceResponse> {
