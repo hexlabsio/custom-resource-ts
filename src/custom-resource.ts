@@ -58,9 +58,9 @@ export class CustomResourceHandler<T> {
   private async handleWithErrors(request: CustomResourceRequest<T>): Promise<PartialCustomResourceResponse> {
     try {
       switch(request.RequestType) {
-        case 'Create': return this.onCreate(request);
-        case 'Update': return this.onUpdate(request);
-        case 'Delete': return this.onDelete(request);
+        case 'Create': return await this.onCreate(request);
+        case 'Update': return await this.onUpdate(request);
+        case 'Delete': return await this.onDelete(request);
         default: return {Status: 'FAILED', Reason: 'Could not understand Request Type'};
       }
     } catch(e) {
