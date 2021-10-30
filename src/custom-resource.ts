@@ -1,3 +1,5 @@
+import fetch from 'node-fetch'
+
 interface PartialCustomResourceRequest<T> {
   RequestType: 'Create' | 'Update' | 'Delete';
   ResponseURL: string;
