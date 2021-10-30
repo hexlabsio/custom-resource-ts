@@ -1,4 +1,4 @@
-interface PartialCustomResourceRequest<T> {
+export interface PartialCustomResourceRequest<T> {
   RequestType: 'Create' | 'Update' | 'Delete';
   ResponseURL: string;
   StackId: string;
