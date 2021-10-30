@@ -1,4 +1,4 @@
-export interface PartialCustomResourceRequest<T> {
+interface PartialCustomResourceRequest<T> {
   RequestType: 'Create' | 'Update' | 'Delete';
   ResponseURL: string;
   StackId: string;
@@ -15,7 +15,7 @@ export type DeleteRequest<T> = PartialCustomResourceRequest<T> & {RequestType: '
 export type CustomResourceRequest<T> = CreateRequest<T> | UpdateRequest<T> | DeleteRequest<T>;
 
 
-interface PartialCustomResourceResponse {
+export interface PartialCustomResourceResponse {
   Status: 'SUCCESS' | 'FAILED';
   Reason?: string;
   NoEcho?: boolean;
