@@ -1,4 +1,5 @@
-import fetch from 'node-fetch'
+import * as https from 'https';
+import * as url from 'url';
 
 interface PartialCustomResourceRequest<T> {
   RequestType: 'Create' | 'Update' | 'Delete';
@@ -31,10 +32,26 @@ export type CustomResourceResponse = PartialCustomResourceResponse & {
   LogicalResourceId: string;
 }
 
-export async function presignedUrlResponder(url: string, response: CustomResourceResponse): Promise<void> {
-  await fetch(url, {
+export async function presignedUrlResponder(location: string, response: CustomResourceResponse): Promise<void> {
+  const uri = url.parse(location);
+  const body = JSON.stringify(response);
+  const options = {
+    hostname: uri.hostname,
+    port: 443,
+    path: uri.path,
     method: 'PUT',
-    body: JSON.stringify(response)
+    headers: {
+      "content-type": "",
+      "content-length": body.length
+    }
+  }
+  await new Promise<void>((resolve, reject) => {
+    const request = https.request(options, () => resolve());
+    request.on('error', (error: any) => {
+      reject(error);
+    });
+    request.write(body);
+    request.end();
   });
 }
 
