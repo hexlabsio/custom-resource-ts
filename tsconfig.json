@@ -12,7 +12,7 @@
     "strictFunctionTypes": true,
     "allowJs": true,
     "moduleResolution": "node",
-    "target": "ESNext",
+    "target": "ES5",
     "pretty": true,
     "declaration": true,
     "inlineSourceMap": true,
