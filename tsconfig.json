@@ -13,6 +13,8 @@
     "allowJs": true,
     "moduleResolution": "node",
     "pretty": true,
+    "module": "commonjs",
+    "target": "ES2019",
     "declaration": true,
     "inlineSourceMap": true,
     "inlineSources": true,
