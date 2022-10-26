@@ -88,12 +88,14 @@ export class CustomResourceHandler<T> {
   
   async handle(request: CustomResourceRequest<T>): Promise<void> {
     const result = await this.handleWithErrors(request);
-    await this.respond(request.ResponseURL, {
-      ...result,
-      PhysicalResourceId: this.identifier,
-      RequestId: request.RequestId,
-      StackId: request.StackId,
-      LogicalResourceId: request.LogicalResourceId
-    });
+    if(request.ResponseURL) {
+      await this.respond(request.ResponseURL, {
+        ...result,
+        PhysicalResourceId: this.identifier,
+        RequestId: request.RequestId,
+        StackId: request.StackId,
+        LogicalResourceId: request.LogicalResourceId
+      });
+    }
   }
 }
