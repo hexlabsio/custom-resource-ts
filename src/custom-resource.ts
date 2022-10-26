@@ -86,7 +86,7 @@ export class CustomResourceHandler<T> {
     }
   }
   
-  async handle(request: CustomResourceRequest<T>): Promise<void> {
+  async handle(request: CustomResourceRequest<T>): Promise<PartialCustomResourceResponse> {
     const result = await this.handleWithErrors(request);
     if(request.ResponseURL) {
       await this.respond(request.ResponseURL, {
@@ -97,5 +97,6 @@ export class CustomResourceHandler<T> {
         LogicalResourceId: request.LogicalResourceId
       });
     }
+    return result;
   }
 }
